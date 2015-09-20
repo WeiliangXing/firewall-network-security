@@ -1,0 +1,4 @@
+This folder contains all data exported from database.
+1. training_data.sql: This file is the data exported form MySQL database, which is the database data we trained our WAF for Anomaly Detection. You can run it in MySQL to show our training records.
+
+2. web_db.sql: This file is the data exported from MySQL database, which is the data for our web application- blog website. You can run it in MySQL to get website records.

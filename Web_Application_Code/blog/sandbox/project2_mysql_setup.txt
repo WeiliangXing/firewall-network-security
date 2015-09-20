@@ -1,0 +1,66 @@
+In Mac:
+1. in system preference, start mysql
+2. mysql -u root -p
+3. create database web_db;
+4.grant all privileges on web_db.* to 'web_db'@'localhost' identified by "password";
+5.exit;
+6. mysql -u web_db -p web_db  // with password “password”
+7. create table users(
+    id int(11) not null auto_increment,
+    user_name varchar(30) not null,
+    password varchar(15) not null,
+    gender tinyint(1) not null,
+    major varchar(15) not null,
+    annual_salary int(6) not null,
+    remark text,
+    primary key (id)
+    );
+Show results by “show columns from users”
+8.insert into users (user_name,password,gender,major,annual_salary,remark)     values('weiliang', '12345', 1, 'computer science', 100000, 'He is the first user.');
+9.in explorer: open localhost/project2/public/manage_content.php
+
+10. add timestamp to the db;
+ alter table users add createDate timestamp NOT NULL DEFAULT '0000-00-00 00:00:00’;
+ alter table users add lastModified timestamp NOT NULL DEFAULT '0000-00-00 00:00:00’;
+11.drop timestamp if it does not work:
+alter table users drop/modify column sth;
+
+12
+DELIMITER;
+CREATE trigger entityinsert BEFORE INSERT ON users FOR EACH ROW BEGIN SET NEW.createDate=IF(ISNULL(NEW.createDate) OR NEW.createDate='0000-00-00 00:00:00', CURRENT_TIMESTAMP, IF(NEW.createDate<CURRENT_TIMESTAMP, NEW.createDate, CURRENT_TIMESTAMP));SET NEW.lastModified=NEW.createDate; END;;
+DELIMITER ;
+CREATE trigger entityupdate BEFORE UPDATE ON entity FOR EACH ROW SET NEW.lastModified=IF(NEW.lastModified<OLD.lastModified, OLD.lastModified, CURRENT_TIMESTAMP);
+
+13 create relational table blogs:
+mysql> create table blogs(
+    -> id int(11) not null auto_increment,
+    -> subject_id int(11) not null,
+    -> title varchar(150) not null,
+    -> view_counts int(11) not null,
+    -> content text,
+    -> primary key (id),
+    -> index (subject_id)
+    -> );
+14. add timestamp to the blogs;
+alter table blogs add create_time timestamp default '0000-00-00 00:00:00';
+alter table blogs add update_time timestamp default now() on update now();
+15, insert the first blog:
+mysql> insert into blogs(subject_id, title, view_counts,content, create_time, update_time)
+     values(1, 'first blog',1,'This is the first blog.', null,null);
+update blogs set content= 'Today I created the first blog.';
+16.create relational table comments:
+mysql> create table comments(
+     id int(11) not null auto_increment,
+     blog_id int(11) not null,
+     user_id int(11) not null,
+     content text,
+     create_time timestamp default '0000-00-00 00:00:00',
+     update_time timestamp default now() on update now(),
+     primary key (id),
+     index (blog_id),
+     index (user_id)
+     );
+17. insert the first comment for blog id 6
+mysql> insert into comments(blog_id,user_id,content,create_time,update_time)
+     values (6,1,'fouth blog is about what',null,null);
+

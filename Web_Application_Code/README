@@ -1,0 +1,5 @@
+This folder contains all files for our web application. All files in this folder should in the path:/var/www/html
+
+1. blog folder: Contains our Web application blog website. This website is used to test our WAF.
+
+2. changeMode.html and modeChange: These two files are used for change WAF mode.
