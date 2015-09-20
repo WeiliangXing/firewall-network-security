@@ -1,0 +1,20 @@
+Maximum number of parameters seen for all requests across all pages:
+11554525;
+Maximum number of parameters seen for every specific page:
+/blog/public/user_main.php;1
+/modeChange;4
+first_page.php;5
+login.php;11554525
+login2.php;(null)
+second_page.php;12345
+Average length of values and Character set for every specific parameter of every specific page:
+/blog/public/user_main.php;user_id;2;0;1;23
+/modeChange;mode;5;0;1;Train
+/modeChange;password;3;0;1;123
+/modeChange;submit;6;0;1;Submit
+/modeChange;username;5;0;1;admin
+first_page.php;p1;-1;-1;0;abc123!@#
+login.php;p1;2002.333333;2786.486597;3;QWERTYU
+p.php;para;-1;-1;0;(null)
+second_page.php;para;49.5;28.86607;200;12345678sdfgh
+

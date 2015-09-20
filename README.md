@@ -2,7 +2,7 @@
 Developed a firewall in C hooked in Apache and a testing website in PHP.
 
 This project is a team project. 
-- Folder WAF_Code is for firewall codes;
+- Folder WAF is for firewall codes;
 - Folder Web_Application_Code is for testing website
 - Folder Data is for testing data
 - File report.pdf is the project report

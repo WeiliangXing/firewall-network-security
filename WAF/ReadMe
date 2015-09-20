@@ -1,0 +1,13 @@
+ReadMe
+
+This folder contains all the code and configuration files for our WAF apache module.
+
+1. mod_pwd_waf.c, mod_pwd_waf.h, readSigConfig.c, waf_anomaly_detection.c, waf_db_operation.c: These files are the source code for our WAF project.
+
+2. WAF_Admin: the administrator username and password required to change between Training and Detection mode. Data Format: first line “user=admin”, second line “password=123”.  Change to desired username and password.  No space.
+
+3. WAF_Sig_Conf: Signature file which contains characteristic of maliciousness.  Data Format: “REQUEST_METHOD:GET,PARAMETER:*,CONTAINS:”<script>””.  One line for each rule. No space except comment part or no empty line in the end. 
+
+4. WAF_Profile: generated information for anomaly detection.  User should not modify this file.
+
+5. WAF_Mode: store current mode.  User should not modify this file.
